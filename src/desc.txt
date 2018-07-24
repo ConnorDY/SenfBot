@@ -1573,6 +1573,107 @@ EMT
 Endocrinologist
 Engineer
 Equestrian
+Estate Manager
+Ethics Officer
+Ethnic Dancer
+Etymologist
+Eviscerator
+Executive
+Eye Doctor
+Facility Manager
+Family Therapist
+Farmer
+Farmhand
+Fashion Consultant
+Fashion Model
+Fast-food Worker
+Field Technician
+Financial Planner
+Firearms Expert
+Fingerprint Specialist
+Fire Fighter
+Fire Inspector
+Fire Marshal
+Fire Ranger
+Fisherman
+Fishing Guide
+Flight Attendant
+Fligh Instructor
+Floral Designer
+Florist
+Food Chemist
+Fitness Trainer
+Forecaster
+Foreign Language Teacher
+Food Inspector
+Forester
+Forensic Chemist
+Foreman
+Frauster
+Fraud Examiner
+Freelance Writer
+Gaffer
+Game Designer
+Game Tester
+Genealogist
+Geneticist
+Geologist
+Geophysicist
+Geriatric Aide
+Geriatric Psychiatrist
+Golf Club Assembler
+Governor
+Graphic Designer
+Gunsmith
+Grounds Manager
+Grounds Keeper
+Gynecologist
+Hairdresser
+Hairstylist
+Hand Peeler
+Handwriting Analyst
+Hazardous Materials Removal Worker
+Head Nurse
+Health Information Technician
+Hearing Aid Specialist
+Heating and Air-Conditioning Technician
+Heavy-Duty Truck Driver
+Helicopter Pilot
+Help-Desk Technician
+High School Counselor
+Historian
+Highway Maintenance Worker
+HIV/AIDS Counselor
+Home Builder
+Home Inspector
+Horse Trainer
+Horticulturist
+Hospice Administrator
+Hospital Attendant
+Humorist
+Human Resources Manager
+Hydrologist
+Hygienist
+Illustrator
+Image Consultant
+Immigration Enforcement Officer
+Immunologist
+Impersonator
+Import-Export Agent
+Independent Claim Adjuster
+Infant Nurse
+Information Officer
+Information Scientist
+Inorganic Chemist
+Input Operator
+Inspector
+Insulation Worker
+Internal Auditor
+Interpreter
+Interior Designer
+Interviewer
+Investor
+IT Specialist
 Jewish
 Loan Broker
 Mormon
