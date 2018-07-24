@@ -691,7 +691,6 @@ made-up
 magnificent
 majestic
 major
-male
 mammoth
 married
 marvelous
@@ -990,8 +989,8 @@ separate
 serene
 serious
 serpentine
-several
 severe
+sexy
 shabby
 shadowy
 shady
@@ -1622,6 +1621,7 @@ Geophysicist
 Geriatric Aide
 Geriatric Psychiatrist
 Golf Club Assembler
+Golfer
 Governor
 Graphic Designer
 Gunsmith
@@ -1683,3 +1683,34 @@ President
 Race Car Driver
 Sex Therapist
 Taxi Driver
+Alligator
+Reptile
+Sexist
+Furry
+Trump Supporter
+Libertarian
+Liberal
+Democrat
+Republican
+Conservative
+Bernie Bro
+Sex Addict
+Turtle
+Feminist
+Halal
+Kosher
+Buddhist
+Satanic
+Satanist
+Hindu
+Christian
+Slave
+Literally Hitler
+Anti-Semitic
+Communist
+Socialist
+Supreme Leader
+Planet
+Solar System
+Galaxy
+Brony
