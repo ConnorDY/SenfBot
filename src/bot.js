@@ -7,7 +7,7 @@ const config = require("./config");
 
 const bot = new Twit(config.twitterKeys);
 const googleImages = require("google-images");
-const images = new googleImages("010610163523097002920:bnksqwov1vq", "AIzaSyC48tH3-fCqgDrOOJ7Z4nqRXu8s6ZNqAFc");
+const images = new googleImages(config.googleAPI.cseID, config.googleAPI.apiKey);
 
 const tweet = require("./api/tweet");
 const path = require("path");

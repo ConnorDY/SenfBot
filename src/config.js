@@ -17,5 +17,9 @@ module.exports = {
     quote: process.env.TWITTER_QUOTE_RATE * 1000 * 60,
     searchCount: process.env.TWITTER_SEARCH_COUNT,
     randomReply: process.env.RANDOM_REPLY
+  },
+  googleAPI: {
+    cseID: process.env.GOOGLE_CSE_ID,
+    apiKey: process.env.GOOGLE_API_KEY
   }
 }
