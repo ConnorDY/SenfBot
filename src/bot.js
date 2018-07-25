@@ -34,7 +34,7 @@ function makeTweet()
 	console.log("Random descriptor chosen: "+desc);
 
 	// Find an image for the descriptor
-	var res = images.search(desc, {size: "medium", safe: "high"});
+	var res = images.search(desc, {size: "medium", type: "face", safe: "high"});
 	res.then((results) =>
 	{
 		var url = results[0]["url"];
@@ -51,11 +51,11 @@ function makeTweet()
 			// Wait for the file to finish downloading
 			file.on("finish", () =>
 			{
-				// Check if the file size is zero
+				// Check if the file size is 'reasonable'
 				var fileSize = fs.statSync(path.join(__dirname, "../image.jpg")).size;
 				console.log("Image size in bytes: "+fileSize);
 
-				if (fileSize > 0)
+				if (fileSize >= 1000)
 				{
 					// Attempt face-swap
 					const spawn = require("child_process").spawn;
