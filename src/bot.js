@@ -13,6 +13,10 @@ const tweet = require("./api/tweet");
 const path = require("path");
 const fs = require("fs");
 
+const swapScript = path.join(__dirname, "./api/faceswap.py");
+const headImage = path.join(__dirname, "../image.jpg");
+const numFaces = 8;
+
 const msHour = 1000*60*60;
 
 function getRandomLine(filename)
@@ -50,11 +54,31 @@ function makeTweet()
 				// Check if the file size is zero
 				var fileSize = fs.statSync(path.join(__dirname, "../image.jpg")).size;
 				console.log("Image size in bytes: "+fileSize);
+
 				if (fileSize > 0)
 				{
-					// Tweet it!
-					var filePath = path.join(__dirname, "../image.jpg");
-					tweet.tweetIMG(desc+" Christian", filePath);
+					// Attempt face-swap
+					const spawn = require("child_process").spawn;
+					const faceNum = Math.floor(Math.random() * numFaces)+1;
+					const faceImage = path.join(__dirname, "../faces/8.jpg");
+					const faceSwap = spawn("python", [swapScript, headImage, faceImage]);
+
+					faceSwap.stdout.on("data", (data) =>
+					{
+						var dataStr = data.toString("utf8");
+						var filePath = path.join(__dirname, "../image.jpg");
+
+						// Check if faceswap succeeded
+						if (dataStr.includes("success"))
+						{
+							filePath = path.join(__dirname, "../swapped.jpg");
+							console.log("Faceswap succeeded! :^)");
+						}
+						else console.log("Failed to faceswap! ;(");
+
+						// Tweet it!
+						tweet.tweetIMG(desc+" Christian", filePath);
+					});
 				}
 				else
 				{

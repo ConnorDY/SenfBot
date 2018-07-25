@@ -45,5 +45,9 @@ jspm_packages
 # production
 /build
 
-# downloaded image
+# downloaded/swapped image
 image.jpg
+swapped.jpg
+
+# face training data
+src/api/face_training.dat
