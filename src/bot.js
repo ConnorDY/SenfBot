@@ -32,28 +32,28 @@ function makeTweet()
   // Find an image for the descriptor
   var res = images.search(desc, {size: "medium", safe: "high"});
   res.then((results) => {
-  	var url = results[0]["url"];
+    var url = results[0]["url"];
 
-  	// Download the file
-  	console.log("Attempting to download file: "+url);
-  	var file = fs.createWriteStream("image.jpg");
+    // Download the file
+    console.log("Attempting to download file: "+url);
+    var file = fs.createWriteStream("image.jpg");
 
-  	function handleGet(response)
-	{
-		// Pipe the response to the file
-		response.pipe(file);
+    function handleGet(response)
+    {
+      // Pipe the response to the file
+      response.pipe(file);
 
-		// Wait for the file to finish downloading
-		file.on("finish", () => {
-			// Tweet it!
-			var filePath = path.join(__dirname, "../image.jpg");
-			tweet.tweetIMG(desc+" Christian", filePath);
-		});
-	}
+      // Wait for the file to finish downloading
+      file.on("finish", () => {
+      	// Tweet it!
+      	var filePath = path.join(__dirname, "../image.jpg");
+      	tweet.tweetIMG(desc+" Christian", filePath);
+      });
+    }
 
-  	var request;
-  	if (url.substr(0,8).localeCompare("https://") == 0) request = https.get(url, handleGet);
-  	else request = http.get(url, handleGet);
+    // Determine if we need to use HTTP or HTTPS to download the image
+    if (url.substr(0,8).localeCompare("https://") == 0) https.get(url, handleGet);
+    else http.get(url, handleGet);
   }, (err) => {
   	console.log(err);
   });
