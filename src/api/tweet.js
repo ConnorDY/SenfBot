@@ -22,10 +22,10 @@ module.exports = {
           var params = {status: text, media_ids: data.media_id_string};
 
           bot.post("statuses/update", params, (err, data, response) => {
-            console.log("Successfully tweeted with image. :)");
+            console.log("Successfully tweeted with image. :)\n");
           })
         }
-        else console.log("Failed to upload IMG to Twitter:\n"+err);
+        else console.log("Failed to upload IMG to Twitter:\n"+err+"\n");
       });
     }
 };

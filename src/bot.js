@@ -24,39 +24,53 @@ function getRandomLine(filename)
 
 function makeTweet()
 {
-  // Pick a random Christian descriptor
-  var desc = getRandomLine("./src/desc.txt");
-  desc = desc.replace(/^\w/, c => c.toUpperCase());
-  console.log("Random descriptor chosen: "+desc);
+	// Pick a random Christian descriptor
+	var desc = getRandomLine("./src/desc.txt");
+	desc = desc.replace(/^\w/, c => c.toUpperCase());
+	console.log("Random descriptor chosen: "+desc);
 
-  // Find an image for the descriptor
-  var res = images.search(desc, {size: "medium", safe: "high"});
-  res.then((results) => {
-    var url = results[0]["url"];
+	// Find an image for the descriptor
+	var res = images.search(desc, {size: "medium", safe: "high"});
+	res.then((results) =>
+	{
+		var url = results[0]["url"];
 
-    // Download the file
-    console.log("Attempting to download file: "+url);
-    var file = fs.createWriteStream("image.jpg");
+		// Download the file
+		console.log("Attempting to download file: "+url);
+		var file = fs.createWriteStream("./image.jpg");
 
-    function handleGet(response)
-    {
-      // Pipe the response to the file
-      response.pipe(file);
+		function handleGet(response)
+		{
+			// Pipe the response to the file
+			response.pipe(file);
 
-      // Wait for the file to finish downloading
-      file.on("finish", () => {
-      	// Tweet it!
-      	var filePath = path.join(__dirname, "../image.jpg");
-      	tweet.tweetIMG(desc+" Christian", filePath);
-      });
-    }
+			// Wait for the file to finish downloading
+			file.on("finish", () =>
+			{
+				// Check if the file size is zero
+				var fileSize = fs.statSync(path.join(__dirname, "../image.jpg")).size;
+				console.log("Image size in bytes: "+fileSize);
+				if (fileSize > 0)
+				{
+					// Tweet it!
+					var filePath = path.join(__dirname, "../image.jpg");
+					tweet.tweetIMG(desc+" Christian", filePath);
+				}
+				else
+				{
+					console.log("Failed to download file. Retrying...\n");
+					makeTweet();
+				}
+			});
+		}
 
-    // Determine if we need to use HTTP or HTTPS to download the image
-    if (url.substr(0,8).localeCompare("https://") == 0) https.get(url, handleGet);
-    else http.get(url, handleGet);
-  }, (err) => {
-  	console.log(err);
-  });
+		// Determine if we need to use HTTP or HTTPS to download the image
+		if (url.substr(0,8).localeCompare("https://") == 0) https.get(url, handleGet);
+		else http.get(url, handleGet);
+	}, (err) =>
+	{
+		console.log(err);
+	});
 }
 
 /***
