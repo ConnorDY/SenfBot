@@ -77,7 +77,7 @@ function makeTweet()
 * Code to run
 ***/
 
-console.log("Bot starting...");
+console.log("Bot starting...\n");
 
 // Run every 3 hours
 makeTweet();
