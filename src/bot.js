@@ -31,66 +31,87 @@ function makeTweet()
 	// Pick a random Christian descriptor
 	var desc = getRandomLine("./src/desc.txt");
 	desc = desc.replace(/^\w/, c => c.toUpperCase());
-	console.log("Random descriptor chosen: "+desc);
+	console.log("# Random descriptor chosen: "+desc+"\n");
 
 	// Find an image for the descriptor
-	var res = images.search(desc, {size: "medium", type: "face", safe: "high"});
+	var res = images.search(desc, {type: "face", safe: "high"});
 	res.then((results) =>
 	{
-		var url = results[0]["url"];
+		var num = 0;
 
-		// Download the file
-		console.log("Attempting to download file: "+url);
-		var file = fs.createWriteStream("./image.jpg");
-
-		function handleGet(response)
+		function tryImageResult(num)
 		{
-			// Pipe the response to the file
-			response.pipe(file);
-
-			// Wait for the file to finish downloading
-			file.on("finish", () =>
+			function retryTweet(n)
 			{
-				// Check if the file size is 'reasonable'
-				var fileSize = fs.statSync(path.join(__dirname, "../image.jpg")).size;
-				console.log("Image size in bytes: "+fileSize);
+				if (n+1 < results.length) tryImageResult(n+1);
+				else makeTweet();
+			}
 
-				if (fileSize >= 1000)
+			var url = results[num]["url"];
+
+			if (url.includes(".gif"))
+			{
+				retryTweet(num);
+				return;
+			}
+
+			// Download the file
+			console.log("Attempting to download image result #"+(num+1)+": "+url);
+			var file = fs.createWriteStream("./image.jpg");
+
+			function handleGet(response)
+			{
+				// Pipe the response to the file
+				response.pipe(file);
+
+				// Wait for the file to finish downloading
+				file.on("finish", () =>
 				{
-					// Attempt face-swap
-					const spawn = require("child_process").spawn;
-					const faceNum = Math.floor(Math.random() * numFaces)+1;
-					const faceImage = path.join(__dirname, "../faces/8.jpg");
-					const faceSwap = spawn("python", [swapScript, headImage, faceImage]);
+					// Check if the file size is 'reasonable'
+					var fileSize = fs.statSync(path.join(__dirname, "../image.jpg")).size;
+					console.log("Image size in bytes: "+fileSize);
 
-					faceSwap.stdout.on("data", (data) =>
+					if (fileSize >= 1000)
 					{
-						var dataStr = data.toString("utf8");
-						var filePath = path.join(__dirname, "../image.jpg");
+						// Attempt face-swap
+						const spawn = require("child_process").spawn;
+						const faceNum = Math.floor(Math.random() * numFaces)+1;
+						const faceImage = path.join(__dirname, "../faces/"+faceNum+".jpg");
+						const faceSwap = spawn("python", [swapScript, headImage, faceImage]);
 
-						// Check if faceswap succeeded
-						if (dataStr.includes("success"))
+						faceSwap.stdout.on("data", (data) =>
 						{
-							filePath = path.join(__dirname, "../swapped.jpg");
-							console.log("Faceswap succeeded! :^)");
-						}
-						else console.log("Failed to faceswap! ;(");
+							var dataStr = data.toString("utf8");
+							var filePath = path.join(__dirname, "../image.jpg");
 
-						// Tweet it!
-						tweet.tweetIMG(desc+" Christian", filePath);
-					});
-				}
-				else
-				{
-					console.log("Failed to download file. Retrying...\n");
-					makeTweet();
-				}
-			});
+							// Check if faceswap succeeded
+							if (dataStr.includes("success"))
+							{
+								filePath = path.join(__dirname, "../swapped.jpg");
+								console.log("Faceswap succeeded! :^)");
+								tweet.tweetIMG(desc+" Christian", filePath);
+							}
+							else
+							{
+								console.log("Failed to faceswap! ;(\n");
+								retryTweet(num);
+							}
+						});
+					}
+					else
+					{
+						console.log("Failed to download file.\n");
+						retryTweet(num);
+					}
+				});
+			}
+
+			// Determine if we need to use HTTP or HTTPS to download the image
+			if (url.substr(0,8).localeCompare("https://") == 0) https.get(url, handleGet);
+			else http.get(url, handleGet);
 		}
 
-		// Determine if we need to use HTTP or HTTPS to download the image
-		if (url.substr(0,8).localeCompare("https://") == 0) https.get(url, handleGet);
-		else http.get(url, handleGet);
+		tryImageResult(num);
 	}, (err) =>
 	{
 		console.log(err);

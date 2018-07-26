@@ -25,7 +25,7 @@ module.exports =
 
 					bot.post("statuses/update", params, (err, data, response) =>
 					{
-						console.log("Successfully tweeted with image. :)\n");
+						console.log("Successfully tweeted with image. :)\n\n");
 					})
 				}
 				else console.log("Failed to upload IMG to Twitter:\n"+err+"\n");
