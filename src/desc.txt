@@ -1372,7 +1372,7 @@ Astronaut
 Astronomer
 Astrophysicist
 Athletic Trainer
-Athetlic Director
+Athletic Director
 Atmospheric Chemist
 Atmospheric Scientist
 Attorney
