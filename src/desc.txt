@@ -1674,15 +1674,273 @@ Interior Designer
 Interviewer
 Investor
 IT Specialist
-Jewish
-Loan Broker
-Mormon
+Janitor
+Jailer
+Jeweler
+Jock
+Jockey
+Judge
+Juggler
+Justice of the Peace
+Kennel Worker
+Kindergarten Teacher
+Kitchen Manager
+Knitter
+Laborer
+Landscaper
+Laser Engineer
+Laundry Worker
+Lawyer
+Lawn Care Professional
+Learning Specialist
+Lecturer
+Legal Aide
+Legislator
+Lending Officer
+Lens Cutter
+Librarian
+Lifeguard
+Line Erector
+Linguist
+Livestock Rancher
+Loan Officer
+Lobbyist
+Locksmith
+Lobster Fisherman
+Logger
+Loss Prevention Specialist
+Lyricist
+Machinist
+Magician
+Magistrate
+Maid
+Mail Clerk
+Makeup Artist
+Manager
+Manicurist
+Marine Biologist
+Marine Geologist
+Marketing Director
+Marketing Researcher
+Marshal
+Mason
+Marriage and Family Therapist
+Mayor
+Mechanic
+Mechanical Engineer
+Meat Grinder
+Meatcutter
+Medical Assistant
+Medical Examiner
+Medical Illustrator
+Member of Congress
+Mender
+Mental Health Counselor
+Messenger
+Metallurgist
+Middle School Teacher
+Microphone Boom Operator
+Midwife
+Mill Operator
+Migrant Worker
+Mime
+Miner
+Mineralogist
+Minister
+Missionary
+Mixer
+Mortician
+Mover
+Mud Logger
+Music Teacher
+Musician
+Music Therapist
+Mycologist
+Nail Artist
+Narcotics Investigator
+Neonatologist
+Net Fisherman
+Neurosurgeon
+Neuropathologist
+News Anchor
+Nuclear Engineer
+Nuclear Pharmacist
+Nurse
+Oceanographer
+Ocean Physicist
+Office Clerk
+Officer
+Oncologist
+Online Merchant
+Opthalmologist
+Optometrist
+Oral Interpreter
+Order Clerk
+Organic Chemist
+Orthodontist
+Orthopedic Surgeon
+Outfitter
+Oven Tender
+Painter
+Packaging Engineer
+Packer
+Paleontologist
+Paralegal
+Park Administrator
+Pathologist
+Pawnbroker
+Pediatric Dentist
+Pediatrician
+Pedicurist
+Penologist
+Performer
+Perfusionist
+Periodontist
+Personal Chef
+Pest Control Worker
+Pet Groomer
+Pet Sitter
+Pharmacist
+Phlebotomist
+Photographer
+Physical Therapist
+Physicist
+Piano Tuner
+Physician
+Pickle Pumper
 Pilot
 Pope
 President
+Plumber
+Poet
+Policeman
+Politician
+Power Plant Operator
+Preschool Teacher
+Priest
+Private Investigator
+Produce Clerk
+Programmer
+Project Manager
+Propulsion Engineer
+Protestant
+Psychiatrist
+Psychologist
+Public Defender
+Psychotherapist
+Public Health Educator
+Public Relations Manager
+Publisher
+Pump Operator
+Quality Assurance Inspector
+Quality Engineer
+Rabbi
 Race Car Driver
+Radiation Therapist
+Radio Dispatcher
+Radiologist
+Radio Mechanic
+Rancher
+Ranger
+Real Estate Agent
+Receptionist
+Records Officer
+Recreational Therapist
+Recruiter
+Referee
+Refugee
+Regional Planner
+Registered Nurse
+Rehab Counselor
+Reporter
+Representative
+Restaurant Manager
+Retail Manager
+Risk Manager
+Rodeo Performer
+Roofer
+Sander
+Salesperson
+Sanitarian
+Sawyer
+School Bus Driver
+Scientist
+Screener
+Secretary
+Senator
+Server
+Sheriff
+Service Technician
+Sewer
+Sex and Gender Sociologist
+Shaver
+Sheep Shearer
+Singer
+Songwriter
+Site Manager
+Skin Care Specialist
+Social Worker
+Sociologist
+Sorter
+Sound Designer
+Special Agent
+Sportscaster
+Statistician
+Steer Wrestler
+Stockbroker
+Still Photographer
+Stonemason
+Supervisor
+Surgeon
+Surveyor
 Sex Therapist
+Tailor
+Tattoo Artist
+Tax Auditor
+Teacher
 Taxi Driver
+Telemarketer
+Teller
+Temp
+Tester
+Termite Technician
+Theater Manager
+Test Shooter
+Therapist
+Tile Layer
+Toll Collector
+Tour Guide
+Tower Erector
+Tow Truck Operators
+Toxicologist
+Trainer
+Travel Agent
+Trial Lawyer
+Trooper
+Truck Driver
+Typist
+Upholsterer
+Umpire
+Usher
+Valet
+Veterinarian
+Vice President
+Video Game Developer
+Waiter
+Web Developer
+Wedding Consultant
+Welder
+Wild Animal Trainer
+Wholesale Dealer
+Wildlife Biologist
+Winemaker
+Wood Scientist
+Writer
+Zookeeper
+Zoologist
+Mormon
+Jewish
+Loan Broker
 Alligator
 Reptile
 Sexist
