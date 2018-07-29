@@ -49,7 +49,8 @@ function makeTweet()
 
 			var url = results[num]["url"];
 
-			if (url.includes(".gif"))
+			// Make sure the image isn't an invalid type
+			if (url.includes(".gif") || url.includes(".svg"))
 			{
 				retryTweet(num);
 				return;
