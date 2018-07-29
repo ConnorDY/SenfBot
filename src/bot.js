@@ -15,7 +15,7 @@ const fs = require("fs");
 
 const swapScript = path.join(__dirname, "./api/faceswap.py");
 const headImage = path.join(__dirname, "../image.jpg");
-const numFaces = 8;
+const numFaces = 13;
 
 const msHour = 1000*60*60;
 
