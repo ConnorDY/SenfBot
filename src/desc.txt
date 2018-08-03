@@ -1597,7 +1597,7 @@ Fire Ranger
 Fisherman
 Fishing Guide
 Flight Attendant
-Fligh Instructor
+Flight Instructor
 Floral Designer
 Florist
 Food Chemist
