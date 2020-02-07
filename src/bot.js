@@ -31,13 +31,13 @@ function getRandomLine(filename) {
 function makeTweet() {
   // Pick a random Christian descriptor
   var desc = getRandomLine('./src/desc.txt');
-  desc = desc.replace(/^\w/, c => c.toUpperCase());
+  desc = desc.replace(/^\w/, (c) => c.toUpperCase());
   console.log('# Random descriptor chosen: ' + desc + '\n');
 
   // Find an image for the descriptor
   var res = images.search(desc, { type: 'face', safe: 'high' });
   res.then(
-    results => {
+    (results) => {
       var num = 0;
 
       function tryImageResult(num) {
@@ -79,25 +79,26 @@ function makeTweet() {
                 __dirname,
                 '../faces/' + faceNum + '.jpg'
               );
-              const faceSwap = spawn('python', [
-                swapScript,
-                headImage,
+              const faceSwap = spawn('npm.cmd', [
+                'run',
+                'faceswap',
+                '--',
                 faceImage
               ]);
 
-              faceSwap.stdout.on('data', data => {
-                var dataStr = data.toString('utf8');
-                var filePath = path.join(__dirname, '../image.jpg');
+              faceSwap.stdout.on('data', (data) => {
+                const dataStr = data.toString('utf8');
+                console.log(dataStr);
 
                 // Check if faceswap succeeded
                 if (dataStr.includes('success')) {
-                  filePath = path.join(__dirname, '../swapped.jpg');
+                  const filePath = path.join(__dirname, '../swapped.jpg');
                   console.log('Faceswap succeeded! :^)');
                   tweet.tweetIMG(desc + ' Christian', filePath);
-                } else {
+                } /*else {
                   console.log('Failed to faceswap! ;(\n');
                   retryTweet(num);
-                }
+                }*/
               });
             } else {
               console.log('Failed to download file.\n');
@@ -114,7 +115,7 @@ function makeTweet() {
 
       tryImageResult(num);
     },
-    err => {
+    (err) => {
       console.log(err);
     }
   );

@@ -1,26 +1,15 @@
 {
   "name": "senfbot",
   "version": "0.1.0",
-  "description": "A bootstrap for a twitter bot!",
+  "description": "There are many different forms of Christian Senf that may appear in the natural world.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "snyk test && node index.js",
-    "snyk-protect": "snyk protect contributor --yes",
-    "deploy": "now -E",
-    "format": "prettier es5 --no-semi --single-quote --write src/**/*.js",
-    "contrib": "contributor"
+    "docker-build": "docker build -t faceswap .",
+    "faceswap": "docker run --rm --mount source=d:/SenfBot/src,target=/app,type=bind faceswap",
+    "other": "ls"
   },
-  "bin": "src/bot.js",
-  "pkg": {
-    "scripts": "src/**/*.js",
-    "assets": "src/*.txt"
-  },
-  "pre-commit": [
-    "format"
-  ],
   "devDependencies": {
-    "contributor": "0.1.25",
     "prettier": "1.13.1"
   },
   "dependencies": {
@@ -32,35 +21,8 @@
     "twit": "^2.2.11",
     "unique-random-array": "^1.0.1"
   },
-  "now": {
-    "alias": "twitter-bot-bootstrap"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/spences10/twitter-bot-bootstrap.git"
-  },
-  "keywords": [
-    "twitter",
-    "bot",
-    "bootstrap"
-  ],
-  "author": "Scott Spence <spences10apps@gmail.com> (https://blog.scottspence.me/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/spences10/twitter-bot-bootstrap/issues"
-  },
-  "homepage": "https://github.com/spences10/twitter-bot-bootstrap#readme",
-  "snyk": true,
-  "contributors": [
-    "Martius (https://github.com/martiuslim)",
-    "Snyk bot (https://github.com/snyk-bot)",
-    "Joshua Vaage (https://github.com/whaleen)",
-    "Sergio Ruiz (https://github.com/serginator)",
-    "Scott Spence (https://github.com/spences10)",
-    "Will Hurley (https://github.com/wjhurley)",
-    "Millan Sanchez (https://github.com/masdc)",
-    "Paul Abrams (https://github.com/pabrams)",
-    "Jade Thornton (https://github.com/Raindeer44)",
-    "Nikki L.R. (https://github.com/nikkilr88)"
-  ]
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "always"
+  }
 }
