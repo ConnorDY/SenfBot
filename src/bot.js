@@ -92,10 +92,10 @@ function makeTweet() {
                   const filePath = path.join(__dirname, '../swapped.jpg');
                   console.log('Faceswap succeeded! :^)');
                   tweet.tweetIMG(desc + ' Christian', filePath);
-                } /*else {
+                } else if (dataStr.includes('No faces')) {
                   console.log('Failed to faceswap! ;(\n');
                   retryTweet(num);
-                }*/
+                }
               });
             } else {
               console.log('Failed to download file.\n');
