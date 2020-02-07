@@ -1,3 +1,5 @@
+# this docker file is not optimized
+# there are likely many things in here that are unnecessary
 FROM python:3.7
 
 RUN apt-get update \
