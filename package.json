@@ -15,10 +15,8 @@
   },
   "dependencies": {
     "dotenv": "^5.0.1",
-    "fotology-x": "^1.2.4",
     "google-images": "^2.1.0",
-    "twit": "^2.2.11",
-    "unique-random-array": "^1.0.1"
+    "twit": "^2.2.11"
   },
   "prettier": {
     "singleQuote": true,
