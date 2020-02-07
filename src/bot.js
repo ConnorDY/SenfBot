@@ -75,10 +75,7 @@ function makeTweet() {
               // Attempt face-swap
               const spawn = require('child_process').spawn;
               const faceNum = Math.floor(Math.random() * numFaces) + 1;
-              const faceImage = path.join(
-                __dirname,
-                '../faces/' + faceNum + '.jpg'
-              );
+              const faceImage = `/app/faces/${faceNum}.jpg`;
               const faceSwap = spawn('npm.cmd', [
                 'run',
                 'faceswap',

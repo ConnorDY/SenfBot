@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "docker-build": "docker build -t faceswap .",
-    "faceswap": "docker run --rm --mount source=d:/SenfBot/src,target=/app,type=bind faceswap",
-    "other": "ls"
+    "faceswap": "docker run --rm --mount source=d:/SenfBot,target=/app,type=bind faceswap"
   },
   "devDependencies": {
     "prettier": "1.13.1"
