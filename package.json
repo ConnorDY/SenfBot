@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "pm2": "pm2 start index.js",
     "docker-build": "docker build -t faceswap .",
     "faceswap": "docker run --rm --mount source=d:/SenfBot,target=/app,type=bind faceswap"
   },
   "devDependencies": {
+    "pm2": "^4.2.3",
     "prettier": "1.13.1"
   },
   "dependencies": {
