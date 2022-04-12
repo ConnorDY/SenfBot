@@ -66,7 +66,7 @@ function makeTweet() {
               const spawn = require('child_process').spawn;
               const faceNum = Math.floor(Math.random() * numFaces) + 1;
               const faceImage = `/app/faces/${faceNum}.jpg`;
-              const faceSwap = spawn('npm.cmd', [
+              const faceSwap = spawn('npm', [
                 'run',
                 'faceswap',
                 '--',
@@ -87,6 +87,10 @@ function makeTweet() {
                   retryTweet(num);
                 }
               });
+
+              faceSwap.stderr.on('data', (data) => {
+                console.error(`stderr: ${data}`);
+              });
             } else {
               console.log('Failed to download file.\n');
               retryTweet(num);
@@ -95,7 +99,7 @@ function makeTweet() {
         }
 
         // Determine if we need to use HTTP or HTTPS to download the image
-        if (url.substr(0, 8).localeCompare('https://') == 0) {
+        if (url.substring(0, 8).localeCompare('https://') == 0) {
           https.get(url, handleGet);
         } else {
           http.get(url, handleGet);
