@@ -12,7 +12,7 @@ const images = new googleImages(
   config.googleAPI.apiKey
 );
 
-const numFaces = 13;
+const numFaces = 20;
 const msHour = 1000 * 60 * 60;
 
 function getRandomLine(filename) {
