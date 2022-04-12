@@ -82,12 +82,16 @@ function makeTweet() {
                   const filePath = path.join(__dirname, '../swapped.jpg');
                   console.log('Faceswap succeeded! :^)');
                   tweet.tweetIMG(`${desc} Christian`, filePath);
-                } else if (dataStr.includes('No faces')) {
+                } else if (
+                  dataStr.includes('No faces') ||
+                  dataStr.includes('Too many faces')
+                ) {
                   console.log('Failed to faceswap! ;(\n');
                   retryTweet(num);
                 }
               });
 
+              // handle errors
               faceSwap.stderr.on('data', (data) => {
                 console.error(`stderr: ${data}`);
               });
