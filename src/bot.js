@@ -69,8 +69,10 @@ function makeTweet(numFaces) {
             if (fileSize >= 1000) {
               // attempt faceswap
               const spawn = require('child_process').spawn;
+
               const faceNum = Math.floor(Math.random() * numFaces) + 1;
               const faceImage = `/app/faces/${faceNum}.jpg`;
+              
               const faceSwap = spawn('npm', [
                 'run',
                 'faceswap',
