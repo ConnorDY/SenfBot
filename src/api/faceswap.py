@@ -221,6 +221,6 @@ output_im = im1 * (1.0 - combined_mask) + warped_corrected_im2 * combined_mask
 
 cv2.imwrite('/app/temp/swapped.jpg', output_im)
 
-# let node know the swap finished
+# fin
 print('success')
 sys.stdout.flush()
