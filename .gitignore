@@ -46,8 +46,8 @@ jspm_packages
 /build
 
 # downloaded/swapped image
-image.jpg
-swapped.jpg
+temp/*
+!temp/.gitkeep
 
 # face training data
-src/api/face_training.dat
+face_training.dat

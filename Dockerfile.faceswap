@@ -1,6 +1,6 @@
 # this docker file is not optimized
 # there are likely many things in here that are unnecessary
-FROM python:3.7
+FROM python:3.7.13-slim-buster@sha256:7f68918938e2777d4a86d6f7381fb351a4b441c4e3ef82927a13133d18a40329
 
 RUN apt-get update \
   && apt-get install -y \
@@ -73,5 +73,12 @@ RUN cd ~ && \
 RUN apt-get autoremove
 
 WORKDIR /app
-ENTRYPOINT ["python3", "/app/src/api/faceswap.py", "/app/image.jpg"]
+
+# add training data
+COPY ./face_training.dat /app/face_training.dat
+
+# add script
+COPY ./src/api/faceswap.py /app/faceswap.py
+
+ENTRYPOINT ["python3", "/app/faceswap.py", "/app/temp/image.jpg"]
 CMD ["/app/faces/5.jpg"]

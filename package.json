@@ -6,17 +6,17 @@
   "scripts": {
     "start": "node index.js",
     "pm2": "pm2 start index.js --name senfbot",
-    "docker-build": "sudo docker build -t cyounglund/faceswap .",
-    "docker-pull": "sudo docker pull cyounglund/faceswap:latest",
-    "docker-push": "sudo docker push cyounglund/faceswap:latest",
-    "faceswap": "sudo docker run --rm --mount source=/home/connor/Projects/SenfBot,target=/app,type=bind cyounglund/faceswap:latest"
+    "docker-build-faceswap": "sudo docker build -t cyounglund/faceswap -f Dockerfile.faceswap .",
+    "docker-pull-faceswap": "sudo docker pull cyounglund/faceswap:latest",
+    "docker-push-faceswap": "sudo docker push cyounglund/faceswap:latest",
+    "faceswap": "sudo docker run --rm --mount source=/home/connor/Projects/SenfBot/faces,target=/app/faces,type=bind --mount source=/home/connor/Projects/SenfBot/temp,target=/app/temp,type=bind cyounglund/faceswap:latest"
   },
   "devDependencies": {
-    "pm2": "^4.2.3",
-    "prettier": "1.13.1"
+    "pm2": "^5.2.0",
+    "prettier": "^2.6.2"
   },
   "dependencies": {
-    "dotenv": "^5.0.1",
+    "dotenv": "^16.0.0",
     "google-images": "^2.1.0",
     "twit": "^2.2.11"
   },
