@@ -4,13 +4,14 @@
   "description": "There are many different forms of Christian Senf that may appear in the natural world.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "pm2": "pm2 start index.js --name senfbot",
+    "start": "dockerd & node index.js",
+    "docker-build": "sudo docker build -t cyounglund/senfbot:latest .",
+    "docker-run": "sudo docker run --rm --env-file .env --privileged cyounglund/senfbot:latest",
+    "docker-push": "sudo docker push cyounglund/senfbot:latest",
     "docker-pull-faceswap": "sudo docker pull cyounglund/faceswap:latest",
-    "faceswap": "sudo docker run --rm --mount source=/home/connor/Projects/SenfBot/faces,target=/app/faces,type=bind --mount source=/home/connor/Projects/SenfBot/temp,target=/app/temp,type=bind cyounglund/faceswap:latest"
+    "faceswap": "docker run --rm -v \"/app/faces:/faces\" -v \"/app/temp:/temp\" cyounglund/faceswap:latest"
   },
   "devDependencies": {
-    "pm2": "^5.2.0",
     "prettier": "^2.6.2"
   },
   "dependencies": {

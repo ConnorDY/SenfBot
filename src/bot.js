@@ -14,7 +14,7 @@ const images = new googleImages(
 
 const msHour = 1000 * 60 * 60;
 
-const descriptorsFilePath = path.join(__dirname, 'descriptors.txt')
+const descriptorsFilePath = path.join(__dirname, 'descriptors.txt');
 const facesDirPath = path.join(__dirname, '../faces');
 const tempImageFilePath = path.join(__dirname, '../temp/original.jpg');
 const swappedFilePath = path.join(__dirname, '../temp/swapped.jpg');
@@ -62,9 +62,7 @@ function makeTweet(numFaces) {
           // wait for the file to finish downloading
           file.on('finish', () => {
             // check if the file size is 'reasonable'
-            const fileSize = fs.statSync(
-              tempImageFilePath
-            ).size;
+            const fileSize = fs.statSync(tempImageFilePath).size;
             console.log(`Image size in bytes: ${fileSize}`);
 
             if (fileSize >= 1000) {
@@ -72,7 +70,7 @@ function makeTweet(numFaces) {
               const spawn = require('child_process').spawn;
 
               const faceNum = Math.floor(Math.random() * numFaces) + 1;
-              const faceImage = `/app/faces/${faceNum}.jpg`;
+              const faceImage = `/faces/${faceNum}.jpg`;
 
               const faceSwap = spawn('npm', [
                 'run',
@@ -131,7 +129,7 @@ console.log('Bot starting...\n');
 
 // determine how many face pictures we have
 const numFaces = fs.readdirSync(facesDirPath).length;
-console.log(`Found ${numFaces} face image(s).`)
+console.log(`Found ${numFaces} face image(s).`);
 
 // make one tweet at startup
 makeTweet(numFaces);
