@@ -80,14 +80,11 @@ COLOUR_CORRECT_BLUR_FRAC = 0.6
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(PREDICTOR_PATH)
 
-
 class TooManyFaces(Exception):
     pass
 
-
 class NoFaces(Exception):
     pass
-
 
 def get_landmarks(im):
     rects = detector(im, 1)
@@ -103,7 +100,6 @@ def get_landmarks(im):
 
     return numpy.matrix([[p.x, p.y] for p in predictor(im, rects[0]).parts()])
 
-
 def annotate_landmarks(im, landmarks):
     im = im.copy()
     for idx, point in enumerate(landmarks):
@@ -115,11 +111,9 @@ def annotate_landmarks(im, landmarks):
         cv2.circle(im, pos, 3, color=(0, 255, 255))
     return im
 
-
 def draw_convex_hull(im, points, color):
     points = cv2.convexHull(points)
     cv2.fillConvexPoly(im, points, color=color)
-
 
 def get_face_mask(im, landmarks):
     im = numpy.zeros(im.shape[:2], dtype=numpy.float64)
@@ -135,7 +129,6 @@ def get_face_mask(im, landmarks):
     im = cv2.GaussianBlur(im, (FEATHER_AMOUNT, FEATHER_AMOUNT), 0)
 
     return im
-
 
 def transformation_from_points(points1, points2):
     """
@@ -176,7 +169,6 @@ def transformation_from_points(points1, points2):
                                        c2.T - (s2 / s1) * R * c1.T)),
                          numpy.matrix([0., 0., 1.])])
 
-
 def read_im_and_landmarks(fname):
     im = cv2.imread(fname, cv2.IMREAD_COLOR)
     im = cv2.resize(im, (im.shape[1] * SCALE_FACTOR,
@@ -184,7 +176,6 @@ def read_im_and_landmarks(fname):
     s = get_landmarks(im)
 
     return im, s
-
 
 def warp_im(im, M, dshape):
     output_im = numpy.zeros(dshape, dtype=im.dtype)
@@ -195,7 +186,6 @@ def warp_im(im, M, dshape):
                    borderMode=cv2.BORDER_TRANSPARENT,
                    flags=cv2.WARP_INVERSE_MAP)
     return output_im
-
 
 def correct_colours(im1, im2, landmarks1):
     blur_amount = COLOUR_CORRECT_BLUR_FRAC * numpy.linalg.norm(
