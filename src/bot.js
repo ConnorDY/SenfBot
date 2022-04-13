@@ -14,6 +14,11 @@ const images = new googleImages(
 
 const msHour = 1000 * 60 * 60;
 
+const descriptorsFilePath = path.join(__dirname, 'descriptors.txt')
+const facesDirPath = path.join(__dirname, '../faces');
+const tempImageFilePath = path.join(__dirname, '../temp/original.jpg');
+const swappedFilePath = path.join(__dirname, '../temp/swapped.jpg');
+
 function getRandomLine(filename) {
   const data = fs.readFileSync(filename, 'utf8');
   const lines = data.toString().split('\n');
@@ -22,7 +27,7 @@ function getRandomLine(filename) {
 
 function makeTweet(numFaces) {
   // pick a random descriptor
-  let desc = getRandomLine('./src/desc.txt');
+  let desc = getRandomLine(descriptorsFilePath);
   desc = desc.replace(/^\w/, (c) => c.toUpperCase());
   console.log(`# Random descriptor chosen: ${desc}\n`);
 
@@ -47,7 +52,7 @@ function makeTweet(numFaces) {
 
         // download the file
         console.log(`Attempting to download image result #${num + 1}: ${url}`);
-        var file = fs.createWriteStream('./temp/image.jpg');
+        const file = fs.createWriteStream(tempImageFilePath);
 
         function handleGet(response) {
           // pipe the response to the file
@@ -57,7 +62,7 @@ function makeTweet(numFaces) {
           file.on('finish', () => {
             // check if the file size is 'reasonable'
             const fileSize = fs.statSync(
-              path.join(__dirname, '../temp/image.jpg')
+              tempImageFilePath
             ).size;
             console.log(`Image size in bytes: ${fileSize}`);
 
@@ -79,9 +84,8 @@ function makeTweet(numFaces) {
 
                 // check if the faceswap succeeded
                 if (dataStr.includes('success')) {
-                  const filePath = path.join(__dirname, '../temp/swapped.jpg');
                   console.log('Faceswap succeeded! :^)');
-                  tweet.tweetIMG(`${desc} Christian`, filePath);
+                  tweet.tweetIMG(`${desc} Christian`, swappedFilePath);
                 } else if (
                   dataStr.includes('No faces') ||
                   dataStr.includes('Too many faces')
@@ -123,8 +127,7 @@ function makeTweet(numFaces) {
 console.log('Bot starting...\n');
 
 // determine how many face pictures we have
-const files = fs.readdirSync(path.join(__dirname, '../faces'));
-const numFaces = files.length;
+const numFaces = fs.readdirSync(facesDirPath).length;
 console.log(`Found ${numFaces} face image(s).`)
 
 // make one tweet at startup

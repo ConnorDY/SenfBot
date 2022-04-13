@@ -80,5 +80,5 @@ COPY ./face_training.dat /app/face_training.dat
 # add script
 COPY ./src/api/faceswap.py /app/faceswap.py
 
-ENTRYPOINT ["python3", "/app/faceswap.py", "/app/temp/image.jpg"]
+ENTRYPOINT ["python3", "/app/faceswap.py", "/app/temp/original.jpg"]
 CMD ["/app/faces/5.jpg"]
