@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 module.exports = {
   twitterKeys: {
@@ -22,4 +22,4 @@ module.exports = {
     cseID: process.env.GOOGLE_CSE_ID,
     apiKey: process.env.GOOGLE_API_KEY
   }
-}
+};
