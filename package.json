@@ -1,6 +1,6 @@
 {
   "name": "senfbot",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "There are many different forms of Christian Senf that may appear in the natural world.",
   "main": "index.js",
   "scripts": {

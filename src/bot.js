@@ -4,8 +4,8 @@ const path = require('path');
 const fs = require('fs');
 const googleImages = require('google-images');
 
-const tweet = require('./api/tweet');
 const config = require('./config');
+const { tweetImg } = require('./tweet');
 
 const images = new googleImages(
   config.googleAPI.cseID,
@@ -19,6 +19,7 @@ const facesDirPath = path.join(__dirname, '../faces');
 const tempImageFilePath = path.join(__dirname, '../temp/original.jpg');
 const swappedFilePath = path.join(__dirname, '../temp/swapped.jpg');
 
+// helper function to retrieve a random line from a text file
 function getRandomLine(filename) {
   const data = fs.readFileSync(filename, 'utf8');
   const lines = data.toString().split('\n');
@@ -72,7 +73,7 @@ function makeTweet(numFaces) {
 
               const faceNum = Math.floor(Math.random() * numFaces) + 1;
               const faceImage = `/app/faces/${faceNum}.jpg`;
-              
+
               const faceSwap = spawn('npm', [
                 'run',
                 'faceswap',
@@ -87,7 +88,7 @@ function makeTweet(numFaces) {
                 // check if the faceswap succeeded
                 if (dataStr.includes('success')) {
                   console.log('Faceswap succeeded! :^)');
-                  tweet.tweetIMG(`${desc} Christian`, swappedFilePath);
+                  tweetImg(`${desc} Christian`, swappedFilePath);
                 } else if (
                   dataStr.includes('No faces') ||
                   dataStr.includes('Too many faces')
